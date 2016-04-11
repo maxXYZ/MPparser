@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<outputHtmlHeaderPath>header.html</outputHtmlHeaderPath>
+	<xmlFilePath>8_7518_20160403.XML</xmlFilePath>
+	<db>
+		<host>127.0.0.1</host>
+		<username>root</username>
+		<pass></pass>
+		<dbname>x</dbname>
+	</db>
+</config>

@@ -147,7 +147,8 @@ class MPayParser {
                 $this->mysqli->real_escape_string($v);
             }
         }
-        if(!$this->mysqli->query('INSERT INTO `mpay-response`(`result`, `timestamp`, `registerid`) VALUES ('.$this->mrvalues['result'].',STR_TO_DATE(\''.$this->mrvalues['time_stamp'].'\', \'%d.%m.%Y %H:%i:%s\'),'.$this->mrvalues['registerid'].')')) {
+        
+        if(count($this->mrvalues) && !$this->mysqli->query('INSERT INTO `mpay-response`(`result`, `timestamp`, `registerid`) VALUES ('.$this->mrvalues['result'].',STR_TO_DATE(\''.$this->mrvalues['time_stamp'].'\', \'%d.%m.%Y %H:%i:%s\'),'.$this->mrvalues['registerid'].')')) {
                 echo "MySql Errno: ".$this->mysqli->errno.'<br />'.PHP_EOL;
                 echo "Error: ".$this->mysqli->error.PHP_EOL;
                 exit();

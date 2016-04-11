@@ -28,7 +28,7 @@ class MPayParser {
         $this->mysqli = $mysqli;
 
         $this->origEncoding = [];
-        $hePos = preg_match('/encoding="(.*)"/', file_get_contents($file, false, NULL, 0, 128), $origEncoding);
+        $hePos = preg_match('/encoding="(.*)"/', file_get_contents($file, false, NULL, 0, 128), $this->origEncoding);
         $this->origEncoding = (@$this->origEncoding[1] ? $this->origEncoding[1] : 'UTF-8');
         $sourceEncoding = ($this->origEncoding == 'UTF-8')? $this->origEncoding : "ISO-8859-1";
 
@@ -85,7 +85,6 @@ class MPayParser {
     }
 
     public function contents($parser, $text) {
-        mb_convert_encoding($text, "UTF-8", $this->origEncoding);
         if (fwrite($this->htmlFileH, '<b>'.$text.'</b>') === false) {
             exit("Unable to write to output html file");
         }

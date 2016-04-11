@@ -131,16 +131,16 @@ class MPayParser {
         fclose($this->textFileH);
         fclose($this->htmlFileH);
 
-        // if(!$this->mysqli->query('LOAD DATA LOCAL INFILE \''.$this->mysqli->real_escape_string(__DIR__.DIRECTORY_SEPARATOR.self::OUTPUT_TEXT_FNAME).'\' INTO TABLE `mp`
-        //     FIELDS TERMINATED BY \',\' ESCAPED BY \'\\\\\' LINES TERMINATED BY \''.$this->mysqli->real_escape_string(PHP_EOL).'\'
-        //     (`payid`, `pctransid`, @var1, `status`, `amount`, `fee`, `annul_amount`, `phone`, `goods_id`, `category_id`, `compensation_operator`, `trading_concession`, `branch`, `source_payment`)
-        //     SET date = STR_TO_DATE(@var1, \'%d.%m.%Y %H:%i:%s\')')) {
+        if(!$this->mysqli->query('LOAD DATA LOCAL INFILE \''.$this->mysqli->real_escape_string(__DIR__.DIRECTORY_SEPARATOR.self::OUTPUT_TEXT_FNAME).'\' INTO TABLE `mp`
+            FIELDS TERMINATED BY \',\' ESCAPED BY \'\\\\\' LINES TERMINATED BY \''.$this->mysqli->real_escape_string(PHP_EOL).'\'
+            (`payid`, `pctransid`, @var1, `status`, `amount`, `fee`, `annul_amount`, `phone`, `goods_id`, `category_id`, `compensation_operator`, `trading_concession`, `branch`, `source_payment`)
+            SET date = STR_TO_DATE(@var1, \'%d.%m.%Y %H:%i:%s\')')) {
 
-        //         echo "MySql Errno: ".$this->mysqli->errno.'<br />'.PHP_EOL;
-        //         echo "Error: ".$this->mysqli->error.PHP_EOL;
-        //         exit();
+                echo "MySql Errno: ".$this->mysqli->errno.'<br />'.PHP_EOL;
+                echo "Error: ".$this->mysqli->error.PHP_EOL;
+                exit();
 
-        // }
+        }
 
         foreach($this->mrvalues as $k=>$v) {
             // Ненадежные ключи, которые нужно отфильтровать
